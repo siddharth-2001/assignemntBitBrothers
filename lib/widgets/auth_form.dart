@@ -79,20 +79,26 @@ class _AuthFormState extends State<AuthForm> {
                     if (!value!.contains('@') || !value.contains('.com'))
                       return 'Enter a valid email';
                   },
+                  keyboardType: TextInputType.emailAddress,
                   onSaved: (value) {
                     formData['email'] = value;
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(hintText: 'password'),
+                  decoration: InputDecoration(hintText: 'password',
+                  
+                  ),
+                  obscureText: true,
                   controller: passController,
                   onSaved: (value) {
                     formData['password'] = value;
                   },
+                  
                 ),
                 if (mode == AuthMode.Register)
                   TextFormField(
                     decoration: InputDecoration(hintText: 'confirm password'),
+                    obscureText: true,
                     validator: (value) {
                       if (value != passController.text)
                         return 'Passwords do not match';
